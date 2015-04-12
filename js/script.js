@@ -77,14 +77,16 @@ function loadData() {
                 );
 
                 $nytHeaderElem.text("New York Times Articles about " + address);
-
+                $nytElem.append(items.join( "" ));
             });
         }else{
-            items.push("<span>Sorry, we couldn't find anything about <b>" + address + "</b></span>");
+            $nytElem.append("<span>Sorry, we couldn't find anything about <b>" + address + "</b></span>");
         }
 
-        
-        $(items.join( "" )).appendTo( $nytElem );
+    }).error(function () {
+        // body...
+        $nytElem.append("<span>Sorry, the search service is unvailable.Thecan be many reasons for that happened.<br/>" + 
+        "Please check if your internet connection is one of them.</span>");
     });
 
     return false;

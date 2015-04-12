@@ -39,7 +39,13 @@ body {background-color: #CCC;}
     list-style-type: none;
     padding:10px;
     border-top: 1px solid #CCC;
+    font-weight: bold;
 }
 .article:first-child {
     border-top:none;
+}
+
+*[id^='keywords_'] {
+    font-style: italic;
+    background-color: rgb(205,180,232);
 }

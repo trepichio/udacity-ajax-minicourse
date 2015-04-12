@@ -49,3 +49,16 @@ body {background-color: #CCC;}
     font-style: italic;
     background-color: rgb(205,180,232);
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: aliceblue;
+}
+
+a:active{
+    color: orange;
+}

@@ -69,16 +69,18 @@ function loadData() {
                                 return obj.value;
                             }).join(" ");
 
-                items.push( "<dt class='article' id='headline_" + key + "'>" + val.headline.main + "</dt>"+ 
-                            "<dd id='dt_"+ key + "'>"+ val.snippet + "<br/>" + 
-                            "<a id='link_" + key + "' href='" + val.web_url + "'>Learn More </a> <br/>" + 
+                items.push( "<dt class='article' id='headline_" + key + "'> <a id='link_" + key + "' href='" + val.web_url + "'> " + val.headline.main + " </a> </dt>" + 
+                            "<dd id='dt_"+ key + "'>"+ val.snippet + "<br/>" +  
                             "<span id='keywords_" + key + "' class='keywords'>" + k + 
                             "</span>" + 
                             "</dd>"
                 );
+
+                $nytHeaderElem.text("New York Times Articles about " + address);
+
             });
         }else{
-            items.push("<span>Sorry, we couldn't find anything about <b>" + $city.val() + "</b></span>");
+            items.push("<span>Sorry, we couldn't find anything about <b>" + address + "</b></span>");
         }
 
         

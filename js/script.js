@@ -83,7 +83,7 @@ function loadData() {
             $nytElem.append("<span>Sorry, we couldn't find anything about <b>" + address + "</b></span>");
         }
 
-    }).error(function () {
+    }).fail(function () {
         // body...
         $nytElem.append("<span>Sorry, the search service is unvailable.Thecan be many reasons for that happened.<br/>" + 
         "Please check if your internet connection is one of them.</span>");

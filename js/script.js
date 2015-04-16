@@ -43,6 +43,7 @@ function loadData() {
             "keywords",
             "web_url"
     ]; 
+    var sort = "newest";
     var nyt_source = "The New York Times";
     var api_key = "a064a541e3631cfee2e539a7c693bf7b:5:71831437";
     var nyt_artURL = "http://api.nytimes.com/svc/search/v2/articlesearch";
@@ -51,7 +52,8 @@ function loadData() {
         "fq=" + [   'source:("' + nyt_source + '")',
                     'glocations:("' + $city.val() + '")'
                 ].join(" AND "),
-        "fl=" + nytart_fl.join(",")
+        "fl=" + nytart_fl.join(","),
+        "sort=" + sort 
     ];
 
     var nyt_artrequest = nyt_artURL + response_format + 

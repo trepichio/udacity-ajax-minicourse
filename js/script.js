@@ -105,6 +105,11 @@ function loadData() {
 
     ].join("&");
 
+    // set a Timeout function to handle error for a JSONP request
+    var wikiRequestTimeout = setTimeout(function () {
+        $wikiElem.text("failed to get Wikipedia resources");
+    }, 8000); 
+
     $.ajax({
         url : wiki_url,
         data : wiki_param,
@@ -116,6 +121,9 @@ function loadData() {
                     '<li> <a href="'+ data[3][i] + '">'+ data[1][i] +'</a></li>'
                 );
             }
+
+            // prevent setTimeout
+            clearTimeout(wikiRequestTimeout);
         }
     });
 

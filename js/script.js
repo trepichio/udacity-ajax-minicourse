@@ -36,7 +36,7 @@ function loadData() {
     $body.append('<img class="bgimg" src="'+ bgImg+'">');
 
     //load New York Times Article API
-    var response_format = ".json";
+    var nyt_response_format = ".json";
     var nytart_fl = [
             "headline",
             "snippet",
@@ -56,7 +56,7 @@ function loadData() {
         "sort=" + sort 
     ];
 
-    var nyt_artrequest = nyt_artURL + response_format + 
+    var nyt_artrequest = nyt_artURL + nyt_response_format + 
         "?" + nyt_artSearch.join("&") + "&api-key=" + api_key;
         console.log(nyt_artrequest);
 
@@ -90,6 +90,35 @@ function loadData() {
         $nytElem.append("<span>Sorry, the search service is unvailable.There can be many reasons for that happened.<br/>" + 
         "Please check if your internet connection is one of them.</span>");
     });
+
+    //load Wikipedia'S API
+    var wiki_response_format = "json";
+    var action = "opensearch";
+    var search = $city.val();
+    var limit = 10;
+    var wiki_url = "http://en.wikipedia.org/w/api.php?";
+    var wiki_param = [
+        "format=" + wiki_response_format,
+        "action=" + action,
+        "search=" + search,
+        "limit=" + limit
+
+    ].join("&");
+
+    $.ajax({
+        url : wiki_url,
+        data : wiki_param,
+        dataType : "jsonp",
+        success : function(data){
+            // console.log(data);
+            for (var i = 0; i < data[1].length; i++){
+                $wikiElem.append(
+                    '<li> <a href="'+ data[3][i] + '">'+ data[1][i] +'</a></li>'
+                );
+            }
+        }
+    });
+
 
     return false;
 };
